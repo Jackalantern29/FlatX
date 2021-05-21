@@ -86,26 +86,26 @@ public class FlattenBukkitAdapter implements IBukkitAdapter {
 
     @Override
     public Block asBukkitBlock(FlatBlock block) {
-        return null;
+        return ((FlattenBlock)block).toBukkit();
     }
 
     @Override
     public BlockState asBukkitBlockState(FlatBlockState state) {
-        return null;
+        return ((FlattenBlockState)state).toBukkit();
     }
 
     @Override
     public Player asBukkitPlayer(FlatPlayer player) {
-        return null;
+        return ((FlattenPlayer)player).toBukkit();
     }
 
     @Override
     public World asBukkitWorld(FlatWorld world) {
-        return null;
+        return ((FlattenWorld)world).toBukkit();
     }
 
     @Override
     public Location asBukkitLocation(FlatLocation location) {
-        return null;
+        return new Location(asBukkitWorld(location.getWorld()), location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
     }
 }
