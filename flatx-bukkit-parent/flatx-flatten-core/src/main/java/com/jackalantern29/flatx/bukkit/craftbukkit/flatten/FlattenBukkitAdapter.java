@@ -4,14 +4,16 @@ import com.jackalantern29.flatx.api.*;
 import com.jackalantern29.flatx.api.enums.FlatMaterial;
 import com.jackalantern29.flatx.bukkit.IBukkitAdapter;
 import com.jackalantern29.flatx.bukkit.VersionUtil;
-import com.jackalantern29.flatx.craftbukkit.flatten.FlattenBlock;
-import com.jackalantern29.flatx.craftbukkit.flatten.FlattenBlockData;
-import com.jackalantern29.flatx.craftbukkit.flatten.FlattenBlockState;
+import com.jackalantern29.flatx.craftbukkit.flatten.*;
+import com.jackalantern29.flatx.craftbukkit.flatten.block.FlattenChest;
+import com.jackalantern29.flatx.craftbukkit.flatten.block.FlattenContainer;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
+import org.bukkit.block.Chest;
+import org.bukkit.block.Container;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.Player;
 
@@ -33,8 +35,13 @@ public class FlattenBukkitAdapter implements IBukkitAdapter {
     }
 
     @Override
-    public FlatBlockState adapt(BlockState blockState) {
-        return new FlattenBlockState(blockState);
+    public FlatBlockState adapt(BlockState state) {
+        if(state instanceof Container) {
+            if(state instanceof Chest)
+                return new FlattenChest((Chest) state);
+            return new FlattenContainer((Container)state);
+        }
+        return new FlattenBlockState(state);
     }
 
     @Override
