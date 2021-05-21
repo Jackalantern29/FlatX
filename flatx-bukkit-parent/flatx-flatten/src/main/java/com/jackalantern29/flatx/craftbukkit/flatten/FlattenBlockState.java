@@ -22,7 +22,7 @@ public class FlattenBlockState implements FlatBlockState {
            state.setBlockData(((FlattenBlockData)data).toBukkit());
     }
 
-    public BlockState getBlockState() {
+    public BlockState toBukkit() {
         return state;
     }
 }
