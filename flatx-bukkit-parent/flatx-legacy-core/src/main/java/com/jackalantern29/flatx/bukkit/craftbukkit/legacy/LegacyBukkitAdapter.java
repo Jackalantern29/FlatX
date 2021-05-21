@@ -2,7 +2,6 @@ package com.jackalantern29.flatx.bukkit.craftbukkit.legacy;
 
 import com.jackalantern29.flatx.api.*;
 import com.jackalantern29.flatx.api.enums.FlatMaterial;
-import com.jackalantern29.flatx.bukkit.BukkitAdapter;
 import com.jackalantern29.flatx.bukkit.IBukkitAdapter;
 import com.jackalantern29.flatx.bukkit.VersionUtil;
 import com.jackalantern29.flatx.craftbukkit.legacy.*;
