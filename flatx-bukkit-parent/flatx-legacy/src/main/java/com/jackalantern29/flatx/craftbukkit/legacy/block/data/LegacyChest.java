@@ -1,7 +1,8 @@
-package com.jackalantern29.flatx.craftbukkit.legacy.block;
+package com.jackalantern29.flatx.craftbukkit.legacy.block.data;
 
-import com.jackalantern29.flatx.api.block.blockdata.FlatChest;
+import com.jackalantern29.flatx.api.block.data.FlatChest;
 import com.jackalantern29.flatx.api.inventory.FlatInventory;
+import com.jackalantern29.flatx.craftbukkit.legacy.block.LegacyContainer;
 import com.jackalantern29.flatx.craftbukkit.legacy.inventory.LegacyInventory;
 import org.bukkit.block.Chest;
 

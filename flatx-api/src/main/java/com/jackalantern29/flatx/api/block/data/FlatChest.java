@@ -1,4 +1,4 @@
-package com.jackalantern29.flatx.api.block.blockdata;
+package com.jackalantern29.flatx.api.block.data;
 
 import com.jackalantern29.flatx.api.block.FlatContainer;
 import com.jackalantern29.flatx.api.inventory.FlatInventory;
