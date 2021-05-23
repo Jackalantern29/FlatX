@@ -5,8 +5,10 @@ import com.jackalantern29.flatx.api.enums.FlatMaterial;
 import com.jackalantern29.flatx.bukkit.IBukkitAdapter;
 import com.jackalantern29.flatx.bukkit.VersionUtil;
 import com.jackalantern29.flatx.craftbukkit.flatten.*;
-import com.jackalantern29.flatx.craftbukkit.flatten.block.FlattenChest;
+import com.jackalantern29.flatx.craftbukkit.flatten.block.data.FlattenChest;
 import com.jackalantern29.flatx.craftbukkit.flatten.block.FlattenContainer;
+import com.jackalantern29.flatx.craftbukkit.flatten.block.data.FlattenDirectional;
+import com.jackalantern29.flatx.craftbukkit.flatten.block.data.type.FlattenPiston;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -15,6 +17,8 @@ import org.bukkit.block.BlockState;
 import org.bukkit.block.Chest;
 import org.bukkit.block.Container;
 import org.bukkit.block.data.BlockData;
+import org.bukkit.block.data.Directional;
+import org.bukkit.block.data.type.Piston;
 import org.bukkit.entity.Player;
 
 public class FlattenBukkitAdapter implements IBukkitAdapter {
@@ -26,6 +30,12 @@ public class FlattenBukkitAdapter implements IBukkitAdapter {
 
     @Override
     public <T> FlatBlockData adapt(T data) {
+        if(data instanceof Piston)
+            return new FlattenPiston((Piston)data);
+        else if(data instanceof Chest)
+            return new com.jackalantern29.flatx.craftbukkit.flatten.block.data.type.FlattenChest((org.bukkit.block.data.type.Chest) data);
+        else if(data instanceof Directional)
+            return new FlattenDirectional((Directional)data);
         return new FlattenBlockData((BlockData)data);
     }
 
