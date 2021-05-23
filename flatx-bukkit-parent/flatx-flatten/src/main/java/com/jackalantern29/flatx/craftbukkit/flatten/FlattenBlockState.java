@@ -22,6 +22,21 @@ public class FlattenBlockState implements FlatBlockState {
            state.setBlockData(((FlattenBlockData)data).toBukkit());
     }
 
+    @Override
+    public boolean update() {
+        return state.update();
+    }
+
+    @Override
+    public boolean update(boolean force) {
+        return state.update(force);
+    }
+
+    @Override
+    public boolean update(boolean force, boolean applyPhysics) {
+        return state.update(force, applyPhysics);
+    }
+
     public BlockState toBukkit() {
         return state;
     }
