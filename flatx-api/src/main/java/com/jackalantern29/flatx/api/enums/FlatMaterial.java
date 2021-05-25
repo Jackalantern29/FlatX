@@ -1101,10 +1101,10 @@ public enum FlatMaterial {
     }
 
     FlatMaterial(String legacy, int id, byte data) {
-        if(id != -1 && legacy == null)
-            this.legacy = name();
-        else
+        if(id == -1 || legacy != null)
             this.legacy = legacy;
+        else
+            this.legacy = name();
         this.id = id;
         this.data = data;
     }
@@ -1122,7 +1122,7 @@ public enum FlatMaterial {
     }
 
     public boolean isLegacyAvailable() {
-        return id != -1;
+        return legacy != null;
     }
 
     public static FlatMaterial fromLegacy(String legacy) {
@@ -1138,12 +1138,13 @@ public enum FlatMaterial {
     }
 
     public static FlatMaterial getMaterial(String material, boolean legacy) {
-        for(FlatMaterial flat : values()) {
-            if(legacy) {
-                if (flat.getLegacyName().equals(material.toUpperCase()))
+        if(!legacy)
+            return FlatMaterial.valueOf(material.toUpperCase());
+        else {
+            for(FlatMaterial flat : values()) {
+                if (flat.isLegacyAvailable() && flat.getLegacyName().equals(material.toUpperCase()))
                     return flat;
-            } else
-                return FlatMaterial.valueOf(material.toUpperCase());
+            }
         }
         return null;
     }
