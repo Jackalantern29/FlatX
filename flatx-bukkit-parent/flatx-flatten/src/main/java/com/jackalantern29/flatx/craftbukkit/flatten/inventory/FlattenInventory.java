@@ -10,6 +10,11 @@ public class FlattenInventory implements FlatInventory {
         this.inventory = inventory;
     }
 
+    @Override
+    public void clear() {
+        inventory.clear();
+    }
+
     public Inventory toBukkit() {
         return inventory;
     }

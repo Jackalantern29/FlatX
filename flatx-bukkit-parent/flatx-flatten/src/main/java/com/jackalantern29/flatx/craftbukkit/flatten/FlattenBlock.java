@@ -28,6 +28,16 @@ public class FlattenBlock implements FlatBlock {
         return new FlatLocation(null/*CraftFlattenAdapter.adapt((World)null)*/, block.getX(), block.getY(), block.getZ());
     }
 
+    @Override
+    public void setBlockData(FlatBlockData data) {
+        setBlockData(data, true);
+    }
+
+    @Override
+    public void setBlockData(FlatBlockData data, boolean applyPhysics) {
+        block.setBlockData(((FlattenBlockData)data).toBukkit(), applyPhysics);
+    }
+
     public Block toBukkit() {
         return block;
     }
