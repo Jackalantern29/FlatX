@@ -4,15 +4,16 @@ import com.jackalantern29.flatx.api.block.FlatBlockFace;
 import com.jackalantern29.flatx.api.block.data.FlatDirectional;
 import com.jackalantern29.flatx.craftbukkit.legacy.LegacyBlockData;
 import org.bukkit.block.BlockFace;
-import org.bukkit.material.DirectionalContainer;
+import org.bukkit.material.Directional;
+import org.bukkit.material.MaterialData;
 
 import java.util.Set;
 
 public class LegacyDirectional extends LegacyBlockData implements FlatDirectional {
-    private DirectionalContainer directional;
+    private final Directional directional;
 
-    public LegacyDirectional(DirectionalContainer data) {
-        super(data);
+    public LegacyDirectional(Directional data) {
+        super((MaterialData) data);
         this.directional = data;
     }
 
@@ -29,9 +30,5 @@ public class LegacyDirectional extends LegacyBlockData implements FlatDirectiona
     @Override
     public void setFacing(FlatBlockFace facing) {
         directional.setFacingDirection(BlockFace.valueOf(facing.name()));
-    }
-
-    public DirectionalContainer toBukkit() {
-        return directional;
     }
 }
