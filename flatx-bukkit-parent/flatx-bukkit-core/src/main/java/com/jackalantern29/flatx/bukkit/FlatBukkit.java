@@ -71,15 +71,15 @@ public class FlatBukkit {
         } else {
             flatData = new MaterialData(BukkitAdapter.asBukkitMaterial(material));
         }
-        if(flatData instanceof BlockData)
-            return BukkitAdapter.adapt((BlockData)flatData);
-        else return BukkitAdapter.adapt((MaterialData)flatData);
+        if(flatData instanceof MaterialData)
+            return BukkitAdapter.adapt((MaterialData)flatData);
+        else return BukkitAdapter.adapt((BlockData)flatData);
     }
 
     public static FlatBlockData createBlockData(String data) {
         if(data == null)
             throw new IllegalArgumentException("Must provide data");
-        Object flatData;
+        Object flatData = null;
         if(VersionUtil.isFlatVersion()) {
             flatData = Bukkit.createBlockData(data);
         } else {
@@ -87,13 +87,18 @@ public class FlatBukkit {
             byte damage;
             Pattern pattern = Pattern.compile("([a-zA-Z]+)\\[?(\\d+)?\\]?");
             Matcher matcher = pattern.matcher(data);
-            material = Material.valueOf(matcher.group(1));
-            damage = Byte.parseByte(matcher.group(2));
-            flatData = new MaterialData(material, damage);
+            if(matcher.find()) {
+                material = Material.valueOf(matcher.group(1).toUpperCase());
+                if(matcher.group(2) == null)
+                    damage = (byte)0;
+                else
+                    damage = Byte.parseByte(matcher.group(2));
+                flatData = new MaterialData(material, damage);
+            }
         }
-        if(flatData instanceof BlockData)
-            return BukkitAdapter.adapt((BlockData)flatData);
-        else return BukkitAdapter.adapt((MaterialData)flatData);
+        if(flatData instanceof MaterialData)
+            return BukkitAdapter.adapt((MaterialData)flatData);
+        else return BukkitAdapter.adapt((BlockData)flatData);
     }
 
     public static FlatBlockData createBlockData(FlatMaterial material, String data) {
@@ -105,8 +110,8 @@ public class FlatBukkit {
         } else {
             flatData = new MaterialData(BukkitAdapter.asBukkitMaterial(material), (byte)0);
         }
-        if(flatData instanceof BlockData)
-            return BukkitAdapter.adapt((BlockData)flatData);
-        else return BukkitAdapter.adapt((MaterialData)flatData);
+        if(flatData instanceof MaterialData)
+            return BukkitAdapter.adapt((MaterialData)flatData);
+        else return BukkitAdapter.adapt((BlockData)flatData);
     }
 }
