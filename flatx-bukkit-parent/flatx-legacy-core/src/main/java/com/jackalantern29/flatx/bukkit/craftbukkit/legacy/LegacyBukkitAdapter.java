@@ -6,7 +6,6 @@ import com.jackalantern29.flatx.bukkit.IBukkitAdapter;
 import com.jackalantern29.flatx.bukkit.VersionUtil;
 import com.jackalantern29.flatx.craftbukkit.legacy.*;
 import com.jackalantern29.flatx.craftbukkit.legacy.block.data.LegacyChest;
-import com.jackalantern29.flatx.craftbukkit.legacy.block.LegacyContainer;
 import com.jackalantern29.flatx.craftbukkit.legacy.block.data.LegacyDirectional;
 import com.jackalantern29.flatx.craftbukkit.legacy.block.data.type.LegacyPiston;
 import org.bukkit.Location;
@@ -15,7 +14,6 @@ import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.Chest;
-import org.bukkit.block.Container;
 import org.bukkit.entity.Player;
 import org.bukkit.material.DirectionalContainer;
 import org.bukkit.material.MaterialData;
@@ -46,11 +44,8 @@ public class LegacyBukkitAdapter implements IBukkitAdapter {
 
     @Override
     public FlatBlockState adapt(BlockState state) {
-        if(state instanceof Container) {
-            if(state instanceof Chest)
-                return new LegacyChest((Chest) state);
-            return new LegacyContainer((Container)state);
-        }
+        if(state instanceof Chest)
+            return new LegacyChest((Chest) state);
         return new LegacyBlockState(state);
     }
 
