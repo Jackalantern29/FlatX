@@ -5,7 +5,7 @@ import com.jackalantern29.flatx.craftbukkit.flatten.FlattenBlockData;
 import org.bukkit.block.data.type.Piston;
 
 public class FlattenPiston extends FlattenBlockData implements FlatPiston {
-    private Piston piston;
+    private final Piston piston;
 
     public FlattenPiston(Piston piston) {
         super(piston);

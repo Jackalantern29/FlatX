@@ -5,7 +5,8 @@ import com.jackalantern29.flatx.craftbukkit.flatten.block.data.FlattenDirectiona
 import org.bukkit.block.data.type.Chest;
 
 public class FlattenChest extends FlattenDirectional implements FlatChest {
-    private Chest chest;
+    private final Chest chest;
+
     public FlattenChest(Chest data) {
         super(data);
         this.chest = data;
