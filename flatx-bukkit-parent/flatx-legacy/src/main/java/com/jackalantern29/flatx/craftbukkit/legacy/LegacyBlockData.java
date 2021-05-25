@@ -30,9 +30,12 @@ public class LegacyBlockData implements FlatBlockData {
 
     @Override
     public String getAsString() {
-        Pattern pattern = Pattern.compile("([a-zA-Z]+)\\(?(\\d+)?\\)?");
+        Pattern pattern = Pattern.compile("([a-zA-Z]+(?:_[a-zA-Z]+)?+)\\(?(\\d+)?\\)?");
         Matcher matcher = pattern.matcher(data.toString());
-        return(matcher.group(1) + "[" + matcher.group(2) + "]");
+        if(matcher.find())
+            return(matcher.group(1) + "[" + matcher.group(2) + "]");
+        else
+            return "";
     }
 
     public MaterialData toBukkit() {
