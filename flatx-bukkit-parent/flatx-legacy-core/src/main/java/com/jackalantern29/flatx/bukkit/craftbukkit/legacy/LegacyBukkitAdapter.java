@@ -50,23 +50,6 @@ public class LegacyBukkitAdapter implements IBukkitAdapter {
     }
 
     @Override
-    public FlatPlayer adapt(Player player) {
-        if(player == null)
-            return null;
-        switch(VersionUtil.getBukkitVersionID()) {
-            case 1: return new com.jackalantern29.flatx.craftbukkit.v1_8_R1.XPlayer(player);
-            case 2: return new com.jackalantern29.flatx.craftbukkit.v1_8_R2.XPlayer(player);
-            case 3: return new com.jackalantern29.flatx.craftbukkit.v1_8_R3.XPlayer(player);
-            case 4: return new com.jackalantern29.flatx.craftbukkit.v1_9_R1.XPlayer(player);
-            case 5: return new com.jackalantern29.flatx.craftbukkit.v1_9_R2.XPlayer(player);
-            case 6: return new com.jackalantern29.flatx.craftbukkit.v1_10_R1.XPlayer(player);
-            case 7: return new com.jackalantern29.flatx.craftbukkit.v1_11_R1.XPlayer(player);
-            case 8: return new com.jackalantern29.flatx.craftbukkit.v1_12_R1.XPlayer(player);
-            default: return null;
-        }
-    }
-
-    @Override
     public FlatWorld adapt(World world) {
         if(world == null)
             return null;

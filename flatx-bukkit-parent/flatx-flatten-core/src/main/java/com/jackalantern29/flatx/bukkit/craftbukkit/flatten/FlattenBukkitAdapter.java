@@ -5,8 +5,8 @@ import com.jackalantern29.flatx.api.enums.FlatMaterial;
 import com.jackalantern29.flatx.bukkit.IBukkitAdapter;
 import com.jackalantern29.flatx.bukkit.VersionUtil;
 import com.jackalantern29.flatx.craftbukkit.flatten.*;
-import com.jackalantern29.flatx.craftbukkit.flatten.block.data.FlattenChest;
 import com.jackalantern29.flatx.craftbukkit.flatten.block.FlattenContainer;
+import com.jackalantern29.flatx.craftbukkit.flatten.block.data.FlattenChest;
 import com.jackalantern29.flatx.craftbukkit.flatten.block.data.FlattenDirectional;
 import com.jackalantern29.flatx.craftbukkit.flatten.block.data.type.FlattenPiston;
 import org.bukkit.Location;
@@ -20,8 +20,14 @@ import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.Directional;
 import org.bukkit.block.data.type.Piston;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 
 public class FlattenBukkitAdapter implements IBukkitAdapter {
+    private final Plugin plugin;
+
+    public FlattenBukkitAdapter(Plugin plugin) {
+        this.plugin = plugin;
+    }
 
     @Override
     public FlatMaterial adapt(Material material) {
@@ -52,22 +58,6 @@ public class FlattenBukkitAdapter implements IBukkitAdapter {
             return new FlattenContainer((Container)state);
         }
         return new FlattenBlockState(state);
-    }
-
-    @Override
-    public FlatPlayer adapt(Player player) {
-        if(player == null)
-            return null;
-        switch(VersionUtil.getBukkitVersionID()) {
-            case 9: return new com.jackalantern29.flatx.craftbukkit.v1_13_R1.XPlayer(player);
-            case 10: return new com.jackalantern29.flatx.craftbukkit.v1_13_R2.XPlayer(player);
-            case 11: return new com.jackalantern29.flatx.craftbukkit.v1_14_R1.XPlayer(player);
-            case 12: return new com.jackalantern29.flatx.craftbukkit.v1_15_R1.XPlayer(player);
-            case 13: return new com.jackalantern29.flatx.craftbukkit.v1_16_R1.XPlayer(player);
-            case 14: return new com.jackalantern29.flatx.craftbukkit.v1_16_R2.XPlayer(player);
-            case 15: return new com.jackalantern29.flatx.craftbukkit.v1_16_R3.XPlayer(player);
-            default: return null;
-        }
     }
 
     @Override

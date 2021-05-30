@@ -14,7 +14,6 @@ public interface IBukkitAdapter {
     <T> FlatBlockData adapt(T data);
     FlatBlock adapt(Block block);
     FlatBlockState adapt(BlockState blockState);
-    FlatPlayer adapt(Player player);
     FlatWorld adapt(World world);
     FlatLocation adapt(Location location);
     Material asBukkitMaterial(FlatMaterial material);

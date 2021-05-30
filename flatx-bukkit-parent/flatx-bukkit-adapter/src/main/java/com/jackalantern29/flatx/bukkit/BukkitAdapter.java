@@ -28,12 +28,6 @@ public class BukkitAdapter {
         return adapter.adapt(state);
     }
 
-    public static FlatPlayer adapt(Player player) {
-        if(player == null)
-            return null;
-        return adapter.adapt(player);
-    }
-
     public static FlatWorld adapt(World world) {
         if(world == null)
             return null;

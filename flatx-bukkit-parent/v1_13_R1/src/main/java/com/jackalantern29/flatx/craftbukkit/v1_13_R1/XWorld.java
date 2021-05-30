@@ -86,7 +86,7 @@ public class XWorld extends FlattenWorld {
     public <T> void spawnParticle(Particle particle, double x, double y, double z, int count, double offsetX, double offsetY, double offsetZ, double extra, T data, boolean force) {
         CraftWorld world = (CraftWorld)toBukkit();
         for(Player player : Bukkit.getOnlinePlayers()) {
-            new XPlayer(player).spawnParticle(particle, x, y, z, count, offsetX, offsetY, offsetZ, extra, data, force);
+            //BukkitAdapter.adapt(player).spawnParticle(particle, x, y, z, count, offsetX, offsetY, offsetZ, extra, data, force);
         }
     }
 }

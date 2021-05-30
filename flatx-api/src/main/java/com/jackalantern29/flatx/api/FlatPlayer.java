@@ -3,6 +3,7 @@ package com.jackalantern29.flatx.api;
 import com.jackalantern29.flatx.api.enums.FlatMaterial;
 
 import java.util.Set;
+import java.util.UUID;
 
 public interface FlatPlayer {
     <T> void spawnParticle(T particle, FlatLocation location, int count);
@@ -20,4 +21,6 @@ public interface FlatPlayer {
     <T> void spawnParticle(T particle, FlatLocation location, int count, double offsetX, double offsetY, double offsetZ, double extra, T data, boolean force);
     <T> void spawnParticle(T particle, double x, double y, double z, int count, double offsetX, double offsetY, double offsetZ, double extra, T data, boolean force);
     FlatBlock getTargetBlock(Set<FlatMaterial> transparent, int maxDistance);
+    UUID getUniqueId();
+    String getName();
 }
